@@ -155,7 +155,8 @@ int main(){
         points[i].cluster = -1;
     }
 
-    // Initialize centroids 
+    // Initialize centroids
+    //Any vector can be initialized as a cluster
     DataPoint centroids[K];
 
     //Taking vector 2 as positive cluster (Cluster 0)
@@ -175,14 +176,17 @@ int main(){
         centroids[2].features[j] = vectors[1][j];
     }
     centroids[2].cluster=2;
-    //printf("a");
+
     // Perform K-Means clustering
     kMeans(points, centroids, MAX_SAMPLES);
-    end=clock();
+
+    //Calculating CPU time
+    end = clock();
     double time;
-    time= ((double) (end - start)) / CLOCKS_PER_SEC;
+    time = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("\nTime: %f",time);
     printf("\n%d",points[0].cluster);
+    
     return 0;
 }
 
